@@ -1,12 +1,14 @@
 package com.example.myfirstapp;
 
-import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.widget.TextView;
 
 public class DisplayMessageActivity extends Activity {
 
@@ -16,6 +18,17 @@ public class DisplayMessageActivity extends Activity {
 		setContentView(R.layout.activity_display_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		Intent intent = getIntent();
+		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		
+	    // Create the text view
+	    TextView textView = new TextView(this);
+	    textView.setTextSize(40);
+	    textView.setText(message);
+
+	    // Set the text view as the activity layout
+	    setContentView(textView);
 	}
 
 	/**
